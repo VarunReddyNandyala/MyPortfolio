@@ -11,6 +11,191 @@
     <!-- AOS Animation Library -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
+        /* 3D Tech Shape Background Styles */
+.shape-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tech-shape {
+    position: absolute;
+    opacity: 0.15;
+    filter: blur(1px);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Cube */
+.cube {
+    width: 80px;
+    height: 80px;
+    transform-style: preserve-3d;
+    animation: rotateCube 20s linear infinite;
+}
+
+.cube-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(75, 108, 183, 0.05);
+    box-shadow: 0 0 15px rgba(72, 97, 255, 0.3);
+}
+
+.cube-front { transform: translateZ(40px); }
+.cube-back { transform: rotateY(180deg) translateZ(40px); }
+.cube-right { transform: rotateY(90deg) translateZ(40px); }
+.cube-left { transform: rotateY(-90deg) translateZ(40px); }
+.cube-top { transform: rotateX(90deg) translateZ(40px); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+/* Circuit lines */
+.circuit {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--primary-color);
+    background: 
+        linear-gradient(90deg, transparent 49%, var(--primary-color) 49%, var(--primary-color) 51%, transparent 51%) center/10px 2px,
+        linear-gradient(0deg, transparent 49%, var(--primary-color) 49%, var(--primary-color) 51%, transparent 51%) center/2px 10px;
+    background-color: rgba(75, 108, 183, 0.02);
+    animation: pulse 5s ease-in-out infinite alternate;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(72, 97, 255, 0.2);
+}
+
+/* Pyramid */
+.pyramid {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 120px solid rgba(72, 97, 255, 0.2);
+    position: relative;
+    animation: floatShape 12s ease-in-out infinite alternate;
+}
+
+.pyramid::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: -30px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--primary-color);
+    transform: rotateX(45deg) rotateZ(45deg);
+}
+
+/* Ring */
+.ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    position: relative;
+    animation: rotateRing 15s linear infinite;
+}
+
+.ring::before,
+.ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.ring::before {
+    width: 140%;
+    height: 140%;
+    border: 1px dashed rgba(72, 97, 255, 0.4);
+}
+
+.ring::after {
+    width: 70%;
+    height: 70%;
+    border: 2px solid rgba(72, 97, 255, 0.6);
+}
+
+/* Hexagon */
+.hexagon {
+    width: 100px;
+    height: 57.7px;
+    background-color: rgba(72, 97, 255, 0.15);
+    position: relative;
+    animation: pulse 7s ease-in-out infinite alternate;
+}
+
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 28.9px solid rgba(72, 97, 255, 0.15);
+}
+
+.hexagon:after {
+    top: 100%;
+    border-top: 28.9px solid rgba(72, 97, 255, 0.15);
+}
+
+/* Binary code */
+.binary {
+    width: 180px;
+    height: 180px;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    animation: floatShape 15s ease-in-out infinite alternate;
+}
+
+.binary::before {
+    content: "10100101101001011010010110100101101001011010010110100101";
+    position: absolute;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1;
+    color: rgba(72, 97, 255, 0.5);
+    top: 0;
+    left: 0;
+    word-break: break-all;
+}
+
+/* Animations */
+@keyframes rotateCube {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes rotateRing {
+    0% { transform: rotateX(0deg) rotateY(80deg); }
+    100% { transform: rotateX(360deg) rotateY(80deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes floatShape {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
         :root {
             --primary-color: #4b6cb7;
             --secondary-color: #182848;
@@ -1031,6 +1216,147 @@
                 });
             });
         });
+        // JavaScript to create and position 3D tech shapes
+document.addEventListener('DOMContentLoaded', function() {
+    createTechBackground();
+});
+
+function createTechBackground() {
+    // Create container for all shapes
+    const shapeBackground = document.createElement('div');
+    shapeBackground.className = 'shape-background';
+    document.body.appendChild(shapeBackground);
+    
+    // Create different types of tech shapes
+    createCubes(5, shapeBackground);
+    createCircuits(4, shapeBackground);
+    createPyramids(3, shapeBackground);
+    createRings(4, shapeBackground);
+    createHexagons(3, shapeBackground);
+    createBinary(3, shapeBackground);
+}
+
+function createCubes(count, container) {
+    for (let i = 0; i < count; i++) {
+        const cube = document.createElement('div');
+        cube.className = 'tech-shape cube';
+        
+        // Create cube faces
+        const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+        faces.forEach(face => {
+            const cubeFace = document.createElement('div');
+            cubeFace.className = `cube-face cube-${face}`;
+            cube.appendChild(cubeFace);
+        });
+        
+        // Position randomly
+        positionRandomly(cube, container);
+        
+        // Add unique animation delay
+        cube.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(cube);
+    }
+}
+
+function createCircuits(count, container) {
+    for (let i = 0; i < count; i++) {
+        const circuit = document.createElement('div');
+        circuit.className = 'tech-shape circuit';
+        
+        // Position randomly
+        positionRandomly(circuit, container);
+        
+        // Add unique animation delay
+        circuit.style.animationDelay = `${Math.random() * 3}s`;
+        
+        container.appendChild(circuit);
+    }
+}
+
+function createPyramids(count, container) {
+    for (let i = 0; i < count; i++) {
+        const pyramid = document.createElement('div');
+        pyramid.className = 'tech-shape pyramid';
+        
+        // Position randomly
+        positionRandomly(pyramid, container);
+        
+        // Add unique animation delay
+        pyramid.style.animationDelay = `${Math.random() * 4}s`;
+        
+        container.appendChild(pyramid);
+    }
+}
+
+function createRings(count, container) {
+    for (let i = 0; i < count; i++) {
+        const ring = document.createElement('div');
+        ring.className = 'tech-shape ring';
+        
+        // Position randomly
+        positionRandomly(ring, container);
+        
+        // Add unique animation delay
+        ring.style.animationDelay = `${Math.random() * 2}s`;
+        
+        container.appendChild(ring);
+    }
+}
+
+function createHexagons(count, container) {
+    for (let i = 0; i < count; i++) {
+        const hexagon = document.createElement('div');
+        hexagon.className = 'tech-shape hexagon';
+        
+        // Position randomly
+        positionRandomly(hexagon, container);
+        
+        // Add unique animation delay
+        hexagon.style.animationDelay = `${Math.random() * 3}s`;
+        
+        container.appendChild(hexagon);
+    }
+}
+
+function createBinary(count, container) {
+    for (let i = 0; i < count; i++) {
+        const binary = document.createElement('div');
+        binary.className = 'tech-shape binary';
+        
+        // Position randomly
+        positionRandomly(binary, container);
+        
+        // Add unique animation delay
+        binary.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(binary);
+    }
+}
+
+function positionRandomly(element, container) {
+    // Calculate available viewport area
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    // Position randomly but keep away from edges
+    const margin = 100;
+    const left = margin + Math.random() * (windowWidth - 2 * margin);
+    const top = margin + Math.random() * (windowHeight - 2 * margin);
+    
+    // Apply random position
+    element.style.left = `${left}px`;
+    element.style.top = `${top}px`;
+    
+    // Apply random rotation
+    const rotateX = Math.random() * 360;
+    const rotateY = Math.random() * 360;
+    const rotateZ = Math.random() * 360;
+    element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+}
     </script>
+    <div class="shape-background">
+    <!-- Shapes will be created and inserted by JavaScript -->
+</div>
 </body>
 </html>
