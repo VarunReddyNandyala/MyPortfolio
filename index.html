@@ -1221,33 +1221,145 @@ document.addEventListener('DOMContentLoaded', function() {
     createTechBackground();
 });
 
+// JavaScript to create and position 3D tech shapes
+document.addEventListener('DOMContentLoaded', function() {
+    createTechBackground();
+});
+
 function createTechBackground() {
     // Create container for all shapes
     const shapeBackground = document.createElement('div');
     shapeBackground.className = 'shape-background';
     document.body.appendChild(shapeBackground);
     
-    // Create different types of tech shapes
-    createCubes(5, shapeBackground);
-    createCircuits(4, shapeBackground);
-    createPyramids(3, shapeBackground);
-    createRings(4, shapeBackground);
-    createHexagons(3, shapeBackground);
-    createBinary(3, shapeBackground);
+    // Create different types of tech shapes - significantly increased counts
+    createCubes(12, shapeBackground);
+    createCircuits(10, shapeBackground);
+    createPyramids(8, shapeBackground);
+    createRings(10, shapeBackground);
+    createHexagons(8, shapeBackground);
+    createBinary(7, shapeBackground);
+    
+    // Create additional concentrated shapes behind the profile photo
+    createProfileBackgroundShapes(shapeBackground);
+}
+
+// Function to create concentrated shapes behind the profile photo
+function createProfileBackgroundShapes(container) {
+    const profileArea = document.querySelector('.profile-pic');
+    if (!profileArea) return;
+    
+    // Get the position of the profile pic for concentrated placement
+    const profileRect = profileArea.getBoundingClientRect();
+    const profileCenterX = profileRect.left + profileRect.width / 2;
+    const profileCenterY = profileRect.top + profileRect.height / 2;
+    
+    // Create concentrated shapes around the profile
+    for (let i = 0; i < 15; i++) {
+        createConcentratedShape(container, profileCenterX, profileCenterY, profileRect.width * 1.5);
+    }
+}
+
+function createConcentratedShape(container, centerX, centerY, radius) {
+    // Randomly select a shape type
+    const shapeTypes = ['cube', 'circuit', 'pyramid', 'ring', 'hexagon', 'binary'];
+    const selectedType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+    
+    let shape;
+    
+    switch(selectedType) {
+        case 'cube':
+            shape = createShapeCube();
+            break;
+        case 'circuit':
+            shape = createShapeCircuit();
+            break;
+        case 'pyramid':
+            shape = createShapePyramid();
+            break;
+        case 'ring':
+            shape = createShapeRing();
+            break;
+        case 'hexagon':
+            shape = createShapeHexagon();
+            break;
+        case 'binary':
+            shape = createShapeBinary();
+            break;
+    }
+    
+    // Position around the profile area with some randomness
+    const angle = Math.random() * Math.PI * 2; // Random angle around the circle
+    const distance = Math.random() * radius; // Random distance within the radius
+    
+    const left = centerX + Math.cos(angle) * distance;
+    const top = centerY + Math.sin(angle) * distance;
+    
+    // Apply position and z-index to be behind the profile
+    shape.style.left = `${left}px`;
+    shape.style.top = `${top}px`;
+    shape.style.zIndex = "-2";
+    
+    // Apply random rotation
+    const rotateX = Math.random() * 360;
+    const rotateY = Math.random() * 360;
+    const rotateZ = Math.random() * 360;
+    shape.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+    
+    // Add animation delay
+    shape.style.animationDelay = `${Math.random() * 5}s`;
+    
+    container.appendChild(shape);
+}
+
+function createShapeCube() {
+    const cube = document.createElement('div');
+    cube.className = 'tech-shape cube';
+    
+    // Create cube faces
+    const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+    faces.forEach(face => {
+        const cubeFace = document.createElement('div');
+        cubeFace.className = `cube-face cube-${face}`;
+        cube.appendChild(cubeFace);
+    });
+    
+    return cube;
+}
+
+function createShapeCircuit() {
+    const circuit = document.createElement('div');
+    circuit.className = 'tech-shape circuit';
+    return circuit;
+}
+
+function createShapePyramid() {
+    const pyramid = document.createElement('div');
+    pyramid.className = 'tech-shape pyramid';
+    return pyramid;
+}
+
+function createShapeRing() {
+    const ring = document.createElement('div');
+    ring.className = 'tech-shape ring';
+    return ring;
+}
+
+function createShapeHexagon() {
+    const hexagon = document.createElement('div');
+    hexagon.className = 'tech-shape hexagon';
+    return hexagon;
+}
+
+function createShapeBinary() {
+    const binary = document.createElement('div');
+    binary.className = 'tech-shape binary';
+    return binary;
 }
 
 function createCubes(count, container) {
     for (let i = 0; i < count; i++) {
-        const cube = document.createElement('div');
-        cube.className = 'tech-shape cube';
-        
-        // Create cube faces
-        const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
-        faces.forEach(face => {
-            const cubeFace = document.createElement('div');
-            cubeFace.className = `cube-face cube-${face}`;
-            cube.appendChild(cubeFace);
-        });
+        const cube = createShapeCube();
         
         // Position randomly
         positionRandomly(cube, container);
@@ -1261,8 +1373,7 @@ function createCubes(count, container) {
 
 function createCircuits(count, container) {
     for (let i = 0; i < count; i++) {
-        const circuit = document.createElement('div');
-        circuit.className = 'tech-shape circuit';
+        const circuit = createShapeCircuit();
         
         // Position randomly
         positionRandomly(circuit, container);
@@ -1276,8 +1387,7 @@ function createCircuits(count, container) {
 
 function createPyramids(count, container) {
     for (let i = 0; i < count; i++) {
-        const pyramid = document.createElement('div');
-        pyramid.className = 'tech-shape pyramid';
+        const pyramid = createShapePyramid();
         
         // Position randomly
         positionRandomly(pyramid, container);
@@ -1291,8 +1401,7 @@ function createPyramids(count, container) {
 
 function createRings(count, container) {
     for (let i = 0; i < count; i++) {
-        const ring = document.createElement('div');
-        ring.className = 'tech-shape ring';
+        const ring = createShapeRing();
         
         // Position randomly
         positionRandomly(ring, container);
@@ -1306,8 +1415,7 @@ function createRings(count, container) {
 
 function createHexagons(count, container) {
     for (let i = 0; i < count; i++) {
-        const hexagon = document.createElement('div');
-        hexagon.className = 'tech-shape hexagon';
+        const hexagon = createShapeHexagon();
         
         // Position randomly
         positionRandomly(hexagon, container);
@@ -1321,8 +1429,7 @@ function createHexagons(count, container) {
 
 function createBinary(count, container) {
     for (let i = 0; i < count; i++) {
-        const binary = document.createElement('div');
-        binary.className = 'tech-shape binary';
+        const binary = createShapeBinary();
         
         // Position randomly
         positionRandomly(binary, container);
