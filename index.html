@@ -793,6 +793,31 @@
         font-size: 1.5rem;
     }
 }
+        .volunteer-card {
+        position: relative;
+        padding-top: 3rem;
+        overflow: hidden;
+        border-left: 4px solid transparent;
+        transition: border-left 0.3s ease;
+    }
+    
+    .volunteer-card:hover {
+        border-left: 4px solid var(--primary-color);
+    }
+    
+    .volunteer-icon {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 2rem;
+        color: rgba(72, 97, 255, 0.3);
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    
+    .volunteer-card:hover .volunteer-icon {
+        transform: scale(1.2) rotate(10deg);
+        color: rgba(72, 97, 255, 0.8);
+    }
     </style>
 </head>
 <body>
@@ -1050,6 +1075,41 @@
                 </div>
             </div>
             <!-- You can add a 3rd certification here with the same structure -->
+        </div>
+    </div>
+</section>
+    <section id="volunteering" class="py-5 bg-dark mt-3">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">Volunteering & Organizing</h2>
+        
+        <div class="row g-4">
+            <!-- Volunteering Experience 1 -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="volunteer-card content-card h-100">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="mb-3">Volunteer, Unnat Bharat Abhiyan (UBA)</h3>
+                    <p class="mb-2"><strong>Organization:</strong> Unnat Bharath Abhiyaan Club, Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology.</p>
+                    <p class="mb-2"><strong>Duration:</strong> March 2022 - April 2024</p>
+                    <p>Actively participated in club events of UBA. Collaborated with local communities and academic institutions to identify and address rural development challenges. Conducted surveys, awareness drives, and field visits to assess socio-economic and environmental issues in adopted villages. Contributed to initiatives focused on education, sanitation, digital literacy, and sustainable development.
+
+Worked in a team to design and implement impactful solutions aligning with UBA’s mission of rural transformation through knowledge-based interventions.</p>
+                </div>
+            </div>
+            
+            <!-- Volunteering Experience 2 -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="volunteer-card content-card h-100">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="mb-3">Event Coordinator</h3>
+                    <p class="mb-2"><strong>Event name:</strong> Vel IdeaForge 2K25</p>
+                    <p class="mb-2"><strong>Conducted on:</strong> 27th to 28th, Feb, 2025</p>
+                    <p>Successfully Organised and  led Design team for the event "Vel Ideaforge 2K25", A National Level 24 Hr Hackathon Conducted by Department of Computer Science and Design, School of Computing, Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
