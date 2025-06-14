@@ -603,6 +603,22 @@
             align-items: flex-start;
             margin-bottom: 1rem;
         }
+        .certificates-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.certificate-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 350px;
+    width: 100%;
+}
+
 
         .volunteer-role {
             font-size: 1.3rem;
@@ -993,44 +1009,51 @@
         </div>
     </section>
 
-    <section id="certificates" class="certificates">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Certificates & Publications</h2>
-            <div class="certificates-container">
-                <div class="certificate-card animate-on-scroll">
-                    <div class="certificate-badge">Verified</div>
-                    <div class="certificate-header">
-                        <div class="certificate-icon">🎓</div>
-                        <div>
-                            <div class="certificate-title">CCNA:Introduction to Networks</div>
-                            <div class="certificate-issuer">Cisco</div>
-                        </div>
-                    </div>
-                </div>
+   <section id="certificates" class="certificates">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Certificates & Publications</h2>
+        <div class="certificates-container">
+            
+            <!-- Certificate 1 -->
+            <div class="certificate-card animate-on-scroll">
                 <div class="certificate-badge">Verified</div>
-                    <div class="certificate-header">
-                        <div class="certificate-icon">🎓</div>
-                        <div>
-                            <div class="certificate-title">Python for Data Science</div>
-                            <div class="certificate-issuer">Great Learning</div>
-                        </div>
+                <div class="certificate-header">
+                    <div class="certificate-icon">🎓</div>
+                    <div>
+                        <div class="certificate-title">CCNA: Introduction to Networks</div>
+                        <div class="certificate-issuer">Cisco</div>
                     </div>
-                </div>
-                
-                <div class="certificate-card animate-on-scroll">
-                    <div class="certificate-badge">Published</div>
-                    <div class="certificate-header">
-                        <div class="certificate-icon">📝</div>
-                        <div>
-                            <div class="certificate-title">Enhancing Accessibility and Communication Through Text to Speech Conversion</div>
-                            <div class="certificate-issuer">2024 International BIT Conference (BITCON)</div>
-                        </div>
-                    </div>
-                    <div class="certificate-date">Published: Dec 2024 • Citations: 45+</div>
                 </div>
             </div>
+            
+            <!-- Certificate 2 -->
+            <div class="certificate-card animate-on-scroll">
+                <div class="certificate-badge">Verified</div>
+                <div class="certificate-header">
+                    <div class="certificate-icon">🎓</div>
+                    <div>
+                        <div class="certificate-title">Python for Data Science</div>
+                        <div class="certificate-issuer">Great Learning</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Publication -->
+            <div class="certificate-card animate-on-scroll">
+                <div class="certificate-badge">Published</div>
+                <div class="certificate-header">
+                    <div class="certificate-icon">📝</div>
+                    <div>
+                        <div class="certificate-title">Enhancing Accessibility and Communication Through Text to Speech Conversion</div>
+                        <div class="certificate-issuer">2024 International BIT Conference (BITCON)</div>
+                    </div>
+                </div>
+                <div class="certificate-date">Published: Dec 2024 • Citations: 45+</div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="volunteering" class="volunteering">
         <div class="container">
