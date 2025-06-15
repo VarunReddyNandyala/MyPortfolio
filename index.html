@@ -351,61 +351,85 @@
             background: linear-gradient(135deg, #2D1B69 0%, #FF6B9D 100%);
         }
 
-        /* Education Section */
       /* Education Section */
-.education {
-    background: linear-gradient(135deg, #11998e 0%, #2D1B69 100%);
-    padding: 4rem 0;
+.education-section {
+  background: linear-gradient(135deg, #11998e, #2D1B69);
+  padding: 5rem 2rem;
+  color: white;
 }
 
-.education-timeline {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding-left: 2rem;
 }
 
-.education-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    color: white;
-    cursor: pointer;
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(#FECA57, #FF6B9D);
 }
 
-.education-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    background-color: rgba(255, 255, 255, 0.1);
+.timeline-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 3rem;
+  align-items: flex-start;
 }
 
-.education-degree {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, #FECA57, #FF6B9D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.timeline-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 0.75rem;
+  margin-right: 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.education-school {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: navy;
-    opacity: 1;
-    font-weight: 500;
+.timeline-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: navy;
 }
 
-.education-year {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 1rem;
+.timeline-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(45deg, #FECA57, #FF6B9D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  color: navy;
+  opacity: 0.95;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.timeline-content span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.timeline-content:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
         /* Achievements Section */
@@ -1009,6 +1033,53 @@ Additionally, I have experience in IoT, developing solutions for connected devic
     </div>
   </div>
 </section>
+<section id="education" class="education-section">
+  <div class="container">
+    <h2 class="section-title text-center">Education</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="navy" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12 3L1 9l11 6 9-4.91v5.41h2V9L12 3zm0 11.33L3.74 9 12 4.67 20.26 9 12 14.33zM5 12.9v2.6c0 1.47 3.33 2.5 7 2.5s7-1.03 7-2.5v-2.6l-7 3.5-7-3.5z"/>
+          </svg>
+        </div>
+        <div class="timeline-content">
+          <h3>B.Tech in Computer Science and Design</h3>
+          <h4>Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology</h4>
+          <span>2022 - 2026</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="navy" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M4 5v14h16V5H4zm14 12H6V7h12v10z"/>
+          </svg>
+        </div>
+        <div class="timeline-content">
+          <h3>Intermediate in MPC</h3>
+          <h4>Narayana Junior College, Hyderabad</h4>
+          <span>2020 - 2022</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="navy" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M20 6h-8V4h-4v2H4v2h16V6zm-2 4H6v10h12V10z"/>
+          </svg>
+        </div>
+        <div class="timeline-content">
+          <h3>High School</h3>
+          <h4>Sri High School</h4>
+          <span>2011 - 2020</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -1055,28 +1126,7 @@ Additionally, I have experience in IoT, developing solutions for connected devic
         </div>
     </section>
 
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Education</h2>
-            <div class="education-timeline">
-                <div class="education-item animate-on-scroll">
-                    <div class="education-degree">B.Tech in Computer Science and Design</div>
-                    <div class="education-school">Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology</div>
-                    <div class="education-year">2022 - 2026</div>
-                </div>
-                <div class="education-item animate-on-scroll">
-                    <div class="education-degree">Intermediate in MPC</div>
-                    <div class="education-school">Narayana Junior College, Hyderabad</div>
-                    <div class="education-year">2020 - 2022</div>
-                </div>
-                <div class="education-item animate-on-scroll">
-                    <div class="education-degree">High School </div>
-                    <div class="education-school">Sri High School</div>
-                    <div class="education-year">2020</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
 
     <section id="achievements" class="achievements">
         <div class="container">
